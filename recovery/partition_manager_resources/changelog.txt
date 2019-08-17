@@ -1,3 +1,7 @@
+<b>1.0.1</b>
+
+<*>Fix Internal Storage location after data format</*>
+
 <b>1.0</b>
 
 <*>Initial version</*>
