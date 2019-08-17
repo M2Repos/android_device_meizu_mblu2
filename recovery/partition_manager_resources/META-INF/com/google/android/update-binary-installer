@@ -1,0 +1,2 @@
+#!/sbin/sh
+/partition_manager/installer.sh "$@"

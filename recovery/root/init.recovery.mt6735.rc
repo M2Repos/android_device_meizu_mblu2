@@ -1,0 +1,6 @@
+on boot
+    # Backward compatibility
+    symlink /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name /dev/block/platform/mtk-msdc.0/by-name
+
+on fs
+    setprop sys.usb.ffs.aio_compat 1

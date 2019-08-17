@@ -1,0 +1,57 @@
+From 3d66a5ba5b7e89ea1d0785d66565286b4893fa5b Mon Sep 17 00:00:00 2001
+From: Dinolek <dinolek@o2.pl>
+Date: Sun, 5 May 2019 13:53:25 +0200
+Subject: [PATCH] Add partition manager to twrp advanced menu
+
+Change-Id: I9398f10ed71875899134d8517af1947b931afe55
+---
+ gui/theme/common/languages/en.xml |  1 +
+ gui/theme/common/portrait.xml     | 14 ++++++++++++++
+ 2 files changed, 15 insertions(+)
+ mode change 100755 => 100644 gui/theme/common/languages/en.xml
+ mode change 100755 => 100644 gui/theme/common/portrait.xml
+
+diff --git a/gui/theme/common/languages/en.xml b/gui/theme/common/languages/en.xml
+old mode 100755
+new mode 100644
+index 7a60120..6d08eda
+--- a/gui/theme/common/languages/en.xml
++++ b/gui/theme/common/languages/en.xml
+@@ -70,6 +70,7 @@
+ 		<string name="file_selector_folders_hdr">Folders</string>
+ 		<string name="select_file_from_storage">Select File from %tw_storage_display_name% (%tw_storage_free_size% MB)</string>
+ 		<string name="adb_sideload_btn">ADB Sideload</string>
++		<string name="partition_manager">Partition Manager</string>
+ 		<string name="install_hdr">Install</string>
+ 		<string name="select_storage_hdr">Select Storage</string>
+ 		<string name="select_storage_btn">Select Storage</string>
+diff --git a/gui/theme/common/portrait.xml b/gui/theme/common/portrait.xml
+old mode 100755
+new mode 100644
+index 86b2111..a594c28
+--- a/gui/theme/common/portrait.xml
++++ b/gui/theme/common/portrait.xml
+@@ -3543,6 +3543,20 @@
+ 					<condition var1="tw_has_data_media" var2="1"/>
+ 					<action function="page">fixcontexts</action>
+ 				</listitem>
++				<listitem name="{@partition_manager=Partition Manager}">
++					<actions>
++						<action function="stopmtp"/>
++						<action function="set">tw_back=advanced</action>
++						<action function="queueclear"/>
++						<action function="cmd">
++							echo "/partition_manager/partition_manager_launch.sh" > /tmp/flash_proxy_command
++						</action>
++						<action function="set">tw_filename=/partition_manager/flash_proxy.zip</action>
++						<action function="queuezip"/>
++						<action function="flash">flash_zip</action>
++						<action function="startmtp"/>
++					</actions>
++				</listitem>
+ 				<listitem name="{@dumlock_btn=HTC Dumlock}">
+ 					<condition var1="tw_show_dumlock" var2="1"/>
+ 					<action function="page">htcdumlock</action>
+-- 
+2.21.0
+
