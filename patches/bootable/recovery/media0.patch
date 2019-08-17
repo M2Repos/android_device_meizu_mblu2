@@ -1,23 +1,25 @@
-From 8352f46f80dd1ea12736230c781b5fcfb91d0704 Mon Sep 17 00:00:00 2001
+From fed654dd1b61082b21f187bcc29398d02a508b8c Mon Sep 17 00:00:00 2001
 From: Dinolek <18579460+Dinolek@users.noreply.github.com>
-Date: Sat, 17 Aug 2019 12:57:02 +0200
+Date: Sat, 17 Aug 2019 17:08:24 +0200
 Subject: [PATCH] Always use /data/media/0 instead of /data/media
 
-Change-Id: I12fc5ba41fac359b9f5e629e680536a12ba494de
+Change-Id: I87d1b9fa51f22a4c2e6e7b258e89c0eedb0163da
 ---
- partition.cpp | 2 ++
- 1 file changed, 2 insertions(+)
+ partition.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/partition.cpp b/partition.cpp
-index 5d4e61d..e68ff0a 100644
+index 5d4e61dc..8b32b008 100644
 --- a/partition.cpp
 +++ b/partition.cpp
-@@ -1112,6 +1112,8 @@ void TWPartition::Setup_Data_Media() {
+@@ -1112,6 +1112,10 @@ void TWPartition::Setup_Data_Media() {
  			Make_Dir("/sdcard", false);
  			Symlink_Mount_Point = "/sdcard";
  		}
-+		if (!TWFunc::Path_Exists(Mount_Point + "/media/0"))
++		if (!TWFunc::Path_Exists(Mount_Point + "/media/0")) {
++			mkdir(Storage_Path.c_str(), 0770);
 +			mkdir((Mount_Point + "/media/0").c_str(), 0770);
++		}
  		if (Mount(false) && TWFunc::Path_Exists(Mount_Point + "/media/0")) {
  			Storage_Path = Mount_Point + "/media/0";
  			Symlink_Path = Storage_Path;
