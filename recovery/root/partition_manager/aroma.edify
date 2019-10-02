@@ -32,18 +32,6 @@ ziptotmp("credits.txt", "credits.txt");
 
 # set common variables
 ini_set("rom_name", file_getprop("/tmp/aroma/version.prop", "name"));
-ini_set("rom_author", "Dinolek (see Credits for more)");
-ini_set("rom_device", getvar("device"));
-
-# show disclaimer
-agreebox(
-	"Disclaimer",
-	"Please read and acknowledge the following information",
-	"@warning",
-	read("/tmp/aroma/disclaimer.txt"),
-	"I understand and have made a Recovery backup",
-	"You must acknowledge the disclaimer to use " + ini_get("rom_name") + "!"
-);
 
 ###################
 ### Main menu
@@ -85,23 +73,18 @@ menubox(
 
 if prop("choice_main_menu.prop", "selected") == "1" then
 	# Partitions
-	if (getvar("partition_status") == 0) then
-		form(
-			"Repartition",
-			"Choose partition table.",
-			"@chip",
-			"choice_repartition.prop",
-			"treble",	"Repartition to treble",	"Rename custom to vendor and resize system",	"select.selected",
-			"stock",    "Repartition to stock",		"Rename vendor to custom and resize system",	"select"
-		);
-	endif;
-	if (getvar("partition_status") == 1 || prop("choice_repartition.prop", "root") == "treble") then
-		writetmpfile("choice_repartition.prop", "root=treble");
-		setvar("partition_subtitle", "You are about to repartition for Treble support.");
-	else
-		writetmpfile("choice_repartition.prop", "root=stock");
-		setvar("partition_subtitle", "You are about to repartition to stock partitions.");
-	endif;
+	form(
+		"Repartition",
+		"Choose partition table.",
+		"@chip",
+		"choice_repartition.prop",
+		"treble20", "Treble(2G System)", "Rename custom to vendor and resize system to 2G", "select",
+		"treble25", "Treble(2.5G System)", "Rename custom to vendor and resize system to 2.5G", "select.selected",
+		"treble30", "Treble(3G System)", "Rename custom to vendor and resize system to 3G", "select",
+		"treble35", "Treble(3.5G System)", "Rename custom to vendor and resize system to 3.5G", "select",
+		"treble40", "Treble(4G System)", "Rename custom to vendor and resize system to 4G", "select",
+		"stock", "Stock", "Rename vendor to custom and resize system to 1.5G", "select"
+	);
 
 	ini_set("text_next", "Repartition");
 	ini_set("icon_next", "@undo");
