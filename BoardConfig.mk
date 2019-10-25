@@ -22,7 +22,10 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/Image.gz-dtb
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+TARGET_KERNEL_SOURCE := kernel/meizu/mblu2
+TARGET_KERNEL_CONFIG := mblu2_defconfig
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_MKBOOTIMG_ARGS := \
     --base 0x40078000 \
     --board $(TARGET_BOARD_PLATFORM) \
@@ -38,6 +41,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/etc/twrp.stock
+TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 RECOVERY_SDCARD_ON_DATA := true

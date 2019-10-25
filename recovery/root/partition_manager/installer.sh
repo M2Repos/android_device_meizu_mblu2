@@ -54,11 +54,7 @@ if [ "$choice" == "stock" ] || [ "$choice" == "treble20" ] || \
 		system_end=$((system_start + system_treble40_partsize - 1))
 	fi
 	ui_print " "
-	if [ "$choice" == "stock" ]; then
-		ui_print "[i] Starting repartition back to stock..."
-	else
-		ui_print "[i] Starting Treble repartition..."
-	fi
+	ui_print "[i] Starting repartition..."
 	ui_print " "
 	ui_print "[#] Deleting old partitions..."
 	sgdisk /dev/block/mmcblk0 --delete $system_partnum

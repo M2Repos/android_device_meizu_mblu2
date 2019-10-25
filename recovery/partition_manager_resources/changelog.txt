@@ -1,3 +1,17 @@
+<b>1.1</b>
+
+<*>Move backups to M2 folder</*>
+<*>Disable config flashing for specific gt9xx models</*>
+<*>Fix battery % and charging speed</*>
+<*>Switch to kernel sources</*>
+
+<b>1.0.2</b>
+
+<*>De-hardcode stuff</*>
+<*>Fix touchscreens</*>
+<*>Add dt2w</*>
+<*>Add more size options</*>
+
 <b>1.0.1</b>
 
 <*>Fix Internal Storage location after data format</*>

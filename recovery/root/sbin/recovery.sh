@@ -3,7 +3,7 @@
 ### Recovery service bootstrap for better Treble support
 # Purpose:
 #  - Prevent recovery from being restarted when it's killed (equivalent to a one-shot service)
-#  - symlink to the correct fstab depending on Treble partition state
+#  - symlink to the correct fstab depending on partitions state
 #
 
 source /partition_manager/constants.sh

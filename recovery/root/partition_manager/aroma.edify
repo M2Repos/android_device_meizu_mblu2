@@ -19,19 +19,15 @@ if (!getvar("device") == "mblu2" ) then
 		"Error",
 		"Wrong device",
 		"@warning",
-		"This is only for mblu2 (Meizu M2) devices."
+		"This is only for mblu2 (Meizu M2) device."
 	);
 	exit("");
 endif;
 
 # extract common files
-ziptotmp("version.prop", "version.prop");
 ziptotmp("changelog.txt", "changelog.txt");
 ziptotmp("disclaimer.txt", "disclaimer.txt");
 ziptotmp("credits.txt", "credits.txt");
-
-# set common variables
-ini_set("rom_name", file_getprop("/tmp/aroma/version.prop", "name"));
 
 ###################
 ### Main menu
@@ -45,23 +41,20 @@ ini_set("icon_next", "@next");
 # Not necessary, happens in a split second
 setvar("partition_status", exec("/sbin/sh", "/partition_manager/get_partition_status.sh"));
 setvar("partition_status_text", "Unrecognized");
-setvar("repartition_subtext", "Unrecognized partition layout");
 if (getvar("partition_status") == 1) then
 	setvar("partition_status_text", "Stock");
-	setvar("repartition_subtext", "Repartition device for Treble capability");
 endif;
 if (getvar("partition_status") == 2) then
 	setvar("partition_status_text", "Treble");
-	setvar("repartition_subtext", "Restore stock partition map");
 endif;
 
 menubox(
-	"Welcome to " + ini_get("rom_name") + "!",
+	"Welcome to Partition Manager!",
 	"Detected Device: <b>" + getvar("device") + "</b>\n" +
 	"Detected partition map: " + getvar("partition_status_text"),
 	"@home",
 	"choice_main_menu.prop",
-	"Repartition", getvar("repartition_subtext"), "@chip",
+	"Repartition", "Repartition device", "@chip",
 	"Changelog", "View changelog for this version", "@changelog",
 	"Credits", "See thanks and credits", "@credits",
 	"Exit", "Exit and return to Recovery", "@exit"
@@ -87,7 +80,7 @@ if prop("choice_main_menu.prop", "selected") == "1" then
 	);
 
 	ini_set("text_next", "Repartition");
-	ini_set("icon_next", "@undo");
+	ini_set("icon_next", "@next");
 
 	agreebox(
 		"Repartition for Treble",
@@ -149,7 +142,7 @@ if prop("choice_main_menu.prop", "selected") == "1" then
 	setvar("retstatus",
 		install(
 			"Repartitioning",
-			"<b>"+ini_get("rom_name")+"</b> is performing the repartition.\n\n"+
+			"<b>" + "Partition Manager" + "</b> is performing the repartition.\n\n"+
 			"This may take a minute.",
 			"@chip",
 			""

@@ -1,6 +1,7 @@
 Credits and thanks :
  - CosmicDan for tissot manager which is a base of partition manager
  - icons8.com for Aroma icons
+ - Humble Potato II for Materialize Theme for AROMA Installer
  - @ghpranav for his experience and suggestions
  - @phhusson for random Treble porting tips and solutions
  - All XDA testers and feedback contributors!
