@@ -1,0 +1,10 @@
+on boot
+    chown system system /sys/devices/virtual/input/input1/enable
+    chmod 0660 /sys/devices/virtual/input/input1/enable
+    chown system system /sys/bus/platform/drivers/mtk-kpd/enable_home_button
+    chmod 0660 /sys/bus/platform/drivers/mtk-kpd/enable_home_button
+
+service vendor.touch-hal-1-0 /vendor/bin/hw/vendor.lineage.touch@1.0-service.mblu2
+    class hal
+    user system
+    group system
