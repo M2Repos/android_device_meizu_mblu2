@@ -11,7 +11,7 @@ fontresload("1", "fonts/Roboto-Light.ttf;", "14");  #-- Title text
 
 # set device from ro.product.device prop, abort if not possible
 setvar("device", sysprop("ro.product.device"));
-if (!getvar("device") == "mblu2" ) then
+if (getvar("device") != "mblu2") then
 	# something wrong with this device/recovery
 	ini_set("text_next", "Exit");
 	ini_set("icon_next", "");
