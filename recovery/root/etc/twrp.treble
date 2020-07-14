@@ -1,7 +1,7 @@
 /boot          emmc  /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/boot
 /system        ext4  /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/system
 /system_image  emmc  /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/system       flags=backup=0
-/vendor        ext4  /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/vendor       flags=wipeingui
+/vendor        ext4  /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/vendor       flags=wipeingui;backup=1
 /vendor_image  emmc  /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/vendor       flags=backup=0
 /cache         ext4  /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/cache
 /data          ext4  /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/userdata     flags=encryptable=/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/metadata

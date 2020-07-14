@@ -45,8 +45,21 @@ if (getvar("partition_status") == 1) then
 	setvar("partition_status_text", "Stock");
 endif;
 if (getvar("partition_status") == 2) then
-	setvar("partition_status_text", "Treble");
+	setvar("partition_status_text", "Treble(2G)");
 endif;
+if (getvar("partition_status") == 3) then
+	setvar("partition_status_text", "Treble(2.5G)");
+endif;
+if (getvar("partition_status") == 4) then
+	setvar("partition_status_text", "Treble(3G)");
+endif;
+if (getvar("partition_status") == 5) then
+	setvar("partition_status_text", "Treble(3.5G)");
+endif;
+if (getvar("partition_status") == 6) then
+	setvar("partition_status_text", "Treble(4G)");
+endif;
+
 
 menubox(
 	"Welcome to Partition Manager!",
@@ -71,11 +84,11 @@ if prop("choice_main_menu.prop", "selected") == "1" then
 		"Choose partition table.",
 		"@chip",
 		"choice_repartition.prop",
-		"treble20", "Treble(2G System)", "Rename custom to vendor and resize system to 2G", "select",
-		"treble25", "Treble(2.5G System)", "Rename custom to vendor and resize system to 2.5G", "select.selected",
-		"treble30", "Treble(3G System)", "Rename custom to vendor and resize system to 3G", "select",
-		"treble35", "Treble(3.5G System)", "Rename custom to vendor and resize system to 3.5G", "select",
-		"treble40", "Treble(4G System)", "Rename custom to vendor and resize system to 4G", "select",
+		"treble20", "Treble(2G)", "Rename custom to vendor and resize system to 2G", "select",
+		"treble25", "Treble(2.5G)", "Rename custom to vendor and resize system to 2.5G", "select.selected",
+		"treble30", "Treble(3G)", "Rename custom to vendor and resize system to 3G", "select",
+		"treble35", "Treble(3.5G)", "Rename custom to vendor and resize system to 3.5G", "select",
+		"treble40", "Treble(4G)", "Rename custom to vendor and resize system to 4G", "select",
 		"stock", "Stock", "Rename vendor to custom and resize system to 1.5G", "select"
 	);
 

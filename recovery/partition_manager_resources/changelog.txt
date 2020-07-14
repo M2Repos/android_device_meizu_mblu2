@@ -1,3 +1,9 @@
+<b>1.2</b>
+
+<*>Update to twrp 3.4.0</*>
+<*>Add option to backup vendor</*>
+<*>Partition manager will now be displaying the current system partition size in the header</*>
+
 <b>1.1.1</b>
 
 <*>Add 32bit build</*>

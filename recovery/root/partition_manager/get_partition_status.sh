@@ -55,12 +55,16 @@ system_partname=$(echo "$system_partline" | awk '{ print $7 }')
 system_partsize=$(($system_partend_current - $system_partstart_current + 1))
 if [ "$system_partnum_current" == "$system_partnum" ]; then
 	if [ "$system_partname" == "system" ]; then
-		if [ "$system_partsize" == "$system_treble20_partsize" ] || \
-		   [ "$system_partsize" == "$system_treble25_partsize" ] || \
-		   [ "$system_partsize" == "$system_treble30_partsize" ] || \
-		   [ "$system_partsize" == "$system_treble35_partsize" ] || \
-		   [ "$system_partsize" == "$system_treble40_partsize" ]; then
-			system_status=treble
+		if [ "$system_partsize" == "$system_treble20_partsize" ]; then
+			system_status=treble20
+		elif [ "$system_partsize" == "$system_treble25_partsize" ]; then
+			system_status=treble25
+		elif [ "$system_partsize" == "$system_treble30_partsize" ]; then
+			system_status=treble30
+		elif [ "$system_partsize" == "$system_treble35_partsize" ]; then
+			system_status=treble35
+		elif [ "$system_partsize" == "$system_treble40_partsize" ]; then
+			system_status=treble40
 		elif [ "$system_partsize" == "$system_stock_partsize" ]; then
 			system_status=stock
 		fi
@@ -103,10 +107,19 @@ fi
 
 # check if we have a treble partition map
 if [ "$assumptions_status" == "correct" -a \
-	 "$system_status" == "treble" -a \
 	 "$cache_status" == "treble" -a \
 	 "$vendor_status" == "treble" ]; then
-	exit 2
+	if [ "$system_status" == "treble20" ]; then
+		exit 2
+	elif [ "$system_status" == "treble25" ]; then
+		exit 3
+	elif [ "$system_status" == "treble30" ]; then
+		exit 4
+	elif [ "$system_status" == "treble35" ]; then
+		exit 5
+	elif [ "$system_status" == "treble40" ]; then
+		exit 6
+	fi
 fi
 
 # nothing else matched, so return 0
